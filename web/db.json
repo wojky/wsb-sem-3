@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "pizzaman",
+      "password": "qwerty",
+      "name": "Kamil"
+    }
+  ],
+  "favs": [
+    {
+      "userId": 1,
+      "items": [2]
+    }
+  ],
+  "orders": [
+    {
+      "userId": 1,
+      "status": "COMPLETED",
+      "menuItems": [2],
+      "totalCost": 2200
+    }
+  ],
+  "carts": [
+    {
+      "userId": 1,
+      "menuItems": [1, 1],
+      "expiredAt": 0
+    }
+  ]
+}
