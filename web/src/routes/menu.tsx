@@ -1,20 +1,19 @@
-import { For, Show, createResource } from "solid-js";
-import { Title, useRouteData } from "solid-start";
-import { useCart } from "~/cart/cart";
-import Price from "~/components/Price";
+import { For, Show, createResource } from 'solid-js';
+import { Title, useRouteData } from 'solid-start';
+import { useCart } from '~/cart/cart';
+import Price from '~/components/Price';
 
 export type MenuPosition = {
   id: number;
-  type: "food";
+  type: 'VEGAN';
   name: string;
-  ingriedients: string[];
-  vegan: boolean;
+  ingredients: string[];
   price: number;
 };
 
 export function routeData() {
   const [menu] = createResource(async () => {
-    const response = await fetch("http://localhost:1234/menu");
+    const response = await fetch('http://localhost:3001/meals');
     return (await response.json()) as MenuPosition[];
   });
 
@@ -39,9 +38,9 @@ export default function Menu() {
             {(item, index) => (
               <li class="flex flex-col md:flex-row">
                 <p>
-                  {index() + 1}. {item.name} {item.vegan ? "🍃" : ""}
+                  {index() + 1}. {item.name} {item.type === 'VEGAN' ? '🍃' : ''}
                 </p>
-                <p class="text-xs">({item.ingriedients.join(", ")})</p>
+                <p class="text-xs">({item.ingredients.join(', ')})</p>
                 <Price price={() => item.price} />
                 <button
                   onClick={() => {

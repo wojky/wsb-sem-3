@@ -3,19 +3,25 @@ import { Role } from 'src/users/role-type.enum';
 import { Roles } from 'src/users/roles.decorator';
 import { CartService } from './cart.service';
 
-@Controller('cart')
+@Controller()
 export class CartController {
   constructor(private cartService: CartService) {}
 
   @Roles(Role.CUSTOMER)
-  @Get()
-  async getUserCart() {
-    // return this.cartService.getUserCart();
-  }
+  @Get('cart')
+  async getUserCart() {}
 
   @Roles(Role.CUSTOMER)
-  @Post()
+  @Post('cart')
   async updateUserCart(@Body('mealId') mealId: number) {
     return this.cartService.updateUserCart(mealId);
   }
+
+  @Roles(Role.CUSTOMER)
+  @Post('orders')
+  async orderMeal() {}
+
+  @Roles(Role.ADMIN)
+  @Get('orders')
+  async getAllOrders() {}
 }

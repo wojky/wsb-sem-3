@@ -46,7 +46,7 @@ export class CartService {
       return null;
     }
 
-    let items = await this.cartItemRepository.find({
+    const items = await this.cartItemRepository.find({
       where: { cartId: cart.id },
     });
 

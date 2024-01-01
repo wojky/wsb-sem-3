@@ -1,5 +1,5 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import { Suspense } from 'solid-js';
 import {
   A,
   Body,
@@ -11,12 +11,12 @@ import {
   Routes,
   Scripts,
   Title,
-} from "solid-start";
-import "./root.css";
-import { CartProvider } from "./cart/cart";
-import { AuthProvider } from "./auth/auth";
-import Header from "./components/Header";
-import { UserProvider } from "./user/user";
+} from 'solid-start';
+import './root.css';
+import { CartProvider } from './cart/cart';
+import { AuthProvider } from './auth/auth';
+import Header from './components/Header';
+import { UserProvider } from './user/user';
 
 export default function Root() {
   return (
@@ -30,7 +30,7 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <UserProvider>
-              <AuthProvider state={true}>
+              <AuthProvider state={false}>
                 <CartProvider state={{ value: 0, items: [] }}>
                   <Header />
                   <Routes>

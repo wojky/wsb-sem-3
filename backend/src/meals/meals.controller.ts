@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Delete,
-  ExecutionContext,
   Get,
   Param,
   ParseIntPipe,
@@ -11,10 +10,10 @@ import {
 } from '@nestjs/common';
 import { MealsService } from './meals.service';
 import { Meal } from './meal.entity';
-import { Public } from 'src/auth/Public.decorator';
-import { Roles } from 'src/users/roles.decorator';
-import { Role } from 'src/users/role-type.enum';
-import { Ctx } from 'src/Ctx';
+
+import { Public } from '../auth/Public.decorator';
+import { Role } from '../users/role-type.enum';
+import { Roles } from '../users/roles.decorator';
 
 @Controller('meals')
 export class MealsController {
@@ -29,6 +28,7 @@ export class MealsController {
       try {
         return { ...meal, ingredients: JSON.parse(meal.ingredients) };
       } catch (e) {
+        console.log('?', meal.name);
         return meal;
       }
     });
