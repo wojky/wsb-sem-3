@@ -1,3 +1,3 @@
 export const JWT_CONSTANTS = {
-  SECRET: 'SECRET',
+  SECRET: process.env.DB_SECRET,
 } as const;
